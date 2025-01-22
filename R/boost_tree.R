@@ -447,8 +447,7 @@ as_xgb_data <- function(x, y, validation = 0, weights = NULL, event_level = "fir
       }
       dat <- xgboost::xgb.DMatrix(
         data = x[trn_index, , drop = FALSE],
-        missing = NA,
-        info = info_list
+        missing = NA
       )
 
     } else {
@@ -456,7 +455,7 @@ as_xgb_data <- function(x, y, validation = 0, weights = NULL, event_level = "fir
       if (!is.null(weights)) {
         info_list$weight <- weights
       }
-      dat <- xgboost::xgb.DMatrix(x, missing = NA, info = info_list)
+      dat <- xgboost::xgb.DMatrix(x, missing = NA)
       watch_list <- list(training = dat)
     }
   } else {
